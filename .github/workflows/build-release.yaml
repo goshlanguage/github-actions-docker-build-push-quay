@@ -50,9 +50,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          build-args: | 
-            name=rhartje/github-action-test
-          tags: ${{ steps.prep.outputs.tags }}
+          tags: rhartje/github-action-test:${{ steps.prep.outputs.tags }}
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
