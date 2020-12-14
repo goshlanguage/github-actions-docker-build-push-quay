@@ -1,0 +1,21 @@
+name: Push example
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.base_ref }}
+      
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_SECRET }}
+          registry: quay.io
+          repository: rhartje/github-action-test
+          tags: ${{ steps.semver.outputs.tag }}
+          
