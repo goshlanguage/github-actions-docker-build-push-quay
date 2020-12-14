@@ -15,4 +15,4 @@ jobs:
           password: ${{ secrets.QUAY_SECRET }}
           registry: quay.io
           repository: rhartje/github-action-test
-          
+          tag_with_sha: true 
