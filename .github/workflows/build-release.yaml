@@ -7,12 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v1
+
+      - name: Login to Quay
+        uses: docker/login-action@v1 
         with:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_SECRET }}
-          registry: quay.io
-          repository: rhartje/github-action-test
-          tag_with_sha: true 
+      
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            rhartje/github-action-test:latest
+
