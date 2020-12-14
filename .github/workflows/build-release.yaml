@@ -31,5 +31,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: rhartje/github-action-test:${{ github.sha }}
+          tags: quay.io/rhartje/github-action-test:${{ github.sha }}
 
