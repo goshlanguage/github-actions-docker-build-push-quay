@@ -17,5 +17,4 @@ jobs:
           password: ${{ secrets.QUAY_SECRET }}
           registry: quay.io
           repository: rhartje/github-action-test
-          tags: ${{ steps.semver.outputs.tag }}
           
