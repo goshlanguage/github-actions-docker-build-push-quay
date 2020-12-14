@@ -6,9 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-        with:
-          ref: ${{ github.base_ref }}
+      - uses: actions/checkout@main
       
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
